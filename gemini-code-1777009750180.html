@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение для любимой жены 💖</title>
+    <style>
+        :root {
+            --bg-color: #FFF5EE;
+            --accent-color: #FFE4B5;
+            --text-color: #5D4037;
+            --button-color: #FFDAB9;
+            --button-hover: #FFCC99;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdf5e6; /* Мягкий фон вокруг карточки */
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        /* Контейнер для гифки, чтобы она точно была видна */
+        .gif-container {
+            width: 100%;
+            min-height: 200px; /* Резервируем место */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .main-gif {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 20px;
+        }
+
+        .main-text {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .buttons-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn-yes {
+            background-color: var(--button-color);
+            color: var(--text-color);
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.05);
+            background-color: var(--button-hover);
+        }
+
+        #surprise-screen {
+            display: none;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #timer {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #CD5C5C;
+        }
+
+        .checklist-card {
+            text-align: left;
+            background: #fff9f5;
+            padding: 25px;
+            border-radius: 25px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .checklist-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .checklist-card li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .checklist-card li::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="main-invite">
+            <div class="gif-container">
+                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueXF4eHh3NXN4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/nDSlfqf0gn5g4/giphy.gif" alt="Spongebob Dance" class="main-gif">
+            </div>
+
+            <p class="main-text">
+                Приглашаю тебя, моя любимая жена ❤️, отпраздновать твое освобождение 🥳 и начало новой арки нашей жизни! ✨🚀
+            </p>
+
+            <div class="buttons-group">
+                <button class="btn-yes" onclick="showSurprise()">Трюфельный да 🍄</button>
+                <button class="btn-yes" onclick="showSurprise()">Коктельный да 🍸</button>
+                <button class="btn-yes" onclick="showSurprise()">Счастливый да 🥰</button>
+                <button class="btn-yes" onclick="showSurprise()">Вкусный да 🍕</button>
+                <button class="btn-yes" onclick="showSurprise()">Милый да 🧸</button>
+            </div>
+        </div>
+
+        <div id="surprise-screen">
+            <h2 style="color: #E9967A;">Ура! До праздника осталось: 🥂</h2>
+            <div id="timer">00:00:00</div>
+            <div class="checklist-card">
+                <strong>Что надо при себе иметь:</strong>
+                <ul>
+                    <li>Желание покушать 🍽️😋</li>
+                    <li>Желание выпить вкусный коктейль 🍸🍍</li>
+                    <li>Свой красивый лук 👗✨💃</li>
+                    <li>Хорошее настроение 😊☀️</li>
+                    <li>Желание поговорить и приятно провести время 💬❤️</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showSurprise() {
+            document.getElementById('main-invite').style.display = 'none';
+            document.getElementById('surprise-screen').style.display = 'block';
+            startTimer();
+        }
+
+        function startTimer() {
+            function update() {
+                const now = new Date();
+                const target = new Date();
+                target.setHours(20, 0, 0, 0);
+
+                let diff = target - now;
+                if (diff < 0) diff = 0;
+
+                const h = Math.floor(diff / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('timer').innerText = 
+                    `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            }
+            update();
+            setInterval(update, 1000);
+        }
+    </script>
+</body>
+</html>
